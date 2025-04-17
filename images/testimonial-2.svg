@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9a9e" />
+      <stop offset="100%" stop-color="#fad0c4" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#gradient2)" />
+  
+  <!-- Abstract User Icon (Female) -->
+  <circle cx="100" cy="80" r="40" fill="#ffffff" />
+  <path d="M100 130 C 60 130, 40 170, 40 200 L 160 200 C 160 170, 140 130, 100 130 Z" fill="#ffffff" />
+  
+  <!-- Hair Details -->
+  <path d="M60 80 C 60 40, 140 40, 140 80" fill="url(#gradient2)" />
+  <path d="M70 100 C 70 70, 130 70, 130 100" fill="url(#gradient2)" />
+</svg>

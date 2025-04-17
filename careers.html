@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Farway Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for careers page */
+        .careers-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .careers-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .careers-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .careers-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .careers-text p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+            line-height: 1.8;
+        }
+        
+        .careers-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .careers-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .culture-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .culture-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .culture-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(44, 110, 207, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .culture-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+        
+        .culture-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .culture-card p {
+            color: var(--gray-color);
+            margin-bottom: 0;
+        }
+        
+        .benefits-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .benefit-card h3 i {
+            color: var(--secondary-color);
+        }
+        
+        .benefit-card p {
+            color: var(--gray-color);
+            margin-bottom: 0;
+        }
+        
+        .job-openings {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .job-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .job-filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .job-filter-btn:hover, .job-filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .job-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .job-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .job-type {
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .job-type.full-time {
+            background-color: rgba(52, 199, 89, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .job-type.part-time {
+            background-color: rgba(255, 204, 0, 0.1);
+            color: var(--warning-color);
+        }
+        
+        .job-type.remote {
+            background-color: rgba(44, 110, 207, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .job-description {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+        
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-tag {
+            padding: 5px 15px;
+            background-color: var(--light-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .application-process {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .process-step p {
+            color: var(--gray-color);
+        }
+        
+        @media (min-width: 768px) {
+            .process-steps {
+                position: relative;
+            }
+            
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: 30px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: var(--border-color);
+                z-index: 0;
+            }
+            
+            .step-number {
+                position: relative;
+                z-index: 1;
+                background-color: var(--primary-color);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .job-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> Farway Security</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html" class="active">Careers</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Join Our Team</h1>
+                <p>Be part of a mission to create a safer digital world. At Farway Security, we're looking for talented individuals who are passionate about cybersecurity and innovation.</p>
+                <div class="cta-buttons">
+                    <a href="#job-openings" class="btn btn-primary">View Open Positions</a>
+                    <a href="#culture" class="btn btn-outline">Our Culture</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/security-shield.svg" alt="Careers at Farway Security">
+            </div>
+        </div>
+    </section>
+
+    <section class="careers-section">
+        <div class="container">
+            <div class="careers-content">
+                <div class="careers-text">
+                    <h3>Why Work With Us?</h3>
+                    <p>At Farway Security, we're on a mission to protect people and organizations from cyber threats. We're looking for passionate individuals who share our commitment to creating innovative security solutions.</p>
+                    <p>Our team consists of cybersecurity experts, software engineers, data scientists, and customer success professionals who work together to stay ahead of evolving threats and deliver exceptional security products.</p>
+                    <p>If you're looking for a challenging and rewarding career where you can make a real difference in the digital safety of millions, Farway Security is the place for you.</p>
+                </div>
+                <div class="careers-image">
+                    <img src="images/security-shield.svg" alt="Farway Security Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="culture" class="culture-section">
+        <div class="container">
+            <h2 class="section-title">Our Culture</h2>
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We encourage creative thinking and embrace new ideas to stay ahead of evolving security threats and deliver cutting-edge solutions.</p>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of teamwork and foster an environment where diverse perspectives come together to solve complex problems.</p>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We operate with honesty and transparency, building trust with our customers, partners, and each other.</p>
+                </div>
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Continuous Learning</h3>
+                    <p>We invest in our team's growth and development, encouraging everyone to expand their knowledge and skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Employee Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3><i class="fas fa-heart"></i> Health & Wellness</h3>
+                    <p>Comprehensive health insurance, mental health support, wellness programs, and gym membership reimbursements.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-coins"></i> Competitive Compensation</h3>
+                    <p>Attractive salary packages, performance bonuses, and employee stock options to share in our success.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-umbrella-beach"></i> Work-Life Balance</h3>
+                    <p>Flexible working hours, remote work options, generous paid time off, and parental leave policies.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-laptop-code"></i> Professional Development</h3>
+                    <p>Learning stipends, conference attendance, certification support, and career advancement opportunities.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-mug-hot"></i> Office Perks</h3>
+                    <p>Catered meals, snacks and beverages, collaborative workspaces, and regular team events.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-piggy-bank"></i> Financial Security</h3>
+                    <p>Retirement plans with company matching, financial planning resources, and education assistance programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="job-openings" class="job-openings">
+        <div class="container">
+            <h2 class="section-title">Current Openings</h2>
+            <div class="job-filters">
+                <button class="job-filter-btn active">All Departments</button>
+                <button class="job-filter-btn">Engineering</button>
+                <button class="job-filter-btn">Security Research</button>
+                <button class="job-filter-btn">Product</button>
+                <button class="job-filter-btn">Marketing</button>
+                <button class="job-filter-btn">Customer Success</button>
+            </div>
+            <div class="job-list">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Senior Security Engineer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                                <span><i class="fas fa-building"></i> Engineering</span>
+                            </div>
+                        </div>
+                        <span class="job-type full-time">Full-time</span>
+                    </div>
+                    <div class="job-description">
+                        <p>We're looking for an experienced Security Engineer to help design and implement secure systems and infrastructure. You'll work on identifying vulnerabilities, developing security features, and ensuring our products meet the highest security standards.</p>
+                    </div>
+                    <div class="job-footer">
+                        <div class="job-tags">
+                            <span class="job-tag">Cloud Security</span>
+                            <span class="job-tag">Threat Modeling</span>
+                            <span class="job-tag">SAST/DAST</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Malware Analyst</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Boston, MA</span>
+                                <span><i class="fas fa-building"></i> Security Research</span>
+                            </div>
+                        </div>
+                        <span class="job-type full-time">Full-time</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Join our threat research team to analyze and reverse engineer malware, develop detection methods, and contribute to our threat intelligence database. You'll help protect our customers from emerging threats.</p>
+                    </div>
+                    <div class="job-footer">
+                        <div class="job-tags">
+                            <span class="job-tag">Reverse Engineering</span>
+                            <span class="job-tag">Threat Intelligence</span>
+                            <span class="job-tag">Sandbox Analysis</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Product Marketing Manager</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                                <span><i class="fas fa-building"></i> Marketing</span>
+                            </div>
+                        </div>
+                        <span class="job-type remote">Remote</span>
+                    </div>
+                    <div class="job-description">
+                        <p>We're seeking a Product Marketing Manager to develop and execute marketing strategies for our security products. You'll work closely with product and sales teams to position our solutions effectively in the market.</p>
+                    </div>
+                    <div class="job-footer">
+                        <div class="job-tags">
+                            <span class="job-tag">Go-to-Market</span>
+                            <span class="job-tag">Competitive Analysis</span>
+                            <span class="job-tag">Content Strategy</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="job-title">
+                            <h3>Frontend Developer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> Austin, TX</span>
+                                <span><i class="fas fa-building"></i> Engineering</span>
+                            </div>
+                        </div>
+                        <span class="job-type full-time">Full-time</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Help build intuitive and responsive user interfaces for our security products. You'll collaborate with designers and backend developers to create seamless user experiences that make complex security features accessible.</p>
+                    </div>
+                    <div class="job-footer">
+                        <div class="job-tags">
+                            <span class="job-tag">React</span>
+                            <span class="job-tag">JavaScript</span>
+                            <span class="job-tag">UI/UX</span>
+                        </div>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="application-process">
+        <div class="container">
+            <h2 class="section-title">Our Application Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Application</h3>
+                    <p>Submit your resume and cover letter through our online portal. We review all applications carefully.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Initial Screening</h3>
+                    <p>Our recruiting team will contact qualified candidates for a brief phone or video interview.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Technical Assessment</h3>
+                    <p>Depending on the role, you may be asked to complete a skills assessment or technical challenge.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Team Interviews</h3>
+                    <p>Meet with potential teammates and managers to discuss your experience and fit for the role.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Offer</h3>
+                    <p>Successful candidates will receive a competitive offer to join our team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't See the Right Role?</h2>
+                <p>We're always looking for talented individuals to join our team. Send us your resume and we'll keep you in mind for future opportunities.</p>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-shield-alt"></i> Farway Security</h3>
+                    <p>Providing advanced security solutions to protect your digital life from evolving cyber threats.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#personal">Personal Protection</a></li>
+                        <li><a href="products.html#family">Family Shield</a></li>
+                        <li><a href="products.html#business">Business Security</a></li>
+                        <li><a href="products.html#mobile">Mobile Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="download.html">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Farway Security. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

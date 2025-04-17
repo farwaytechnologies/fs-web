@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6a11cb" />
+      <stop offset="100%" stop-color="#2575fc" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#gradient1)" />
+  
+  <!-- Abstract User Icon -->
+  <circle cx="100" cy="80" r="40" fill="#ffffff" />
+  <path d="M100 130 C 60 130, 40 170, 40 200 L 160 200 C 160 170, 140 130, 100 130 Z" fill="#ffffff" />
+  
+  <!-- Business Suit Details -->
+  <path d="M85 130 L 85 180 L 115 180 L 115 130" fill="url(#gradient1)" />
+  <path d="M90 130 L 90 140 L 110 140 L 110 130" fill="#ffffff" opacity="0.6" />
+</svg>

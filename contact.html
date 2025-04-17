@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Farway Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for contact page */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(44, 110, 207, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-card-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .contact-card-content p, .contact-card-content a {
+            color: var(--gray-color);
+            transition: var(--transition);
+        }
+        
+        .contact-card-content a:hover {
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 110, 207, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .map-container {
+            margin-top: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 400px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .offices-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .office-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .office-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .office-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .office-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .office-card:hover .office-image img {
+            transform: scale(1.1);
+        }
+        
+        .office-info {
+            padding: 20px;
+        }
+        
+        .office-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .office-info p {
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+        
+        .office-info .btn {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> Farway Security</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>Have questions or need assistance? Our team is here to help you with all your security needs.</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/security-shield.svg" alt="Security Shield">
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-card-content">
+                            <h3>Our Headquarters</h3>
+                            <p>123 Security Avenue, Tech District<br>San Francisco, CA 94105, USA</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-card-content">
+                            <h3>Phone</h3>
+                            <p>Sales: <a href="tel:+18005551234">+1 (800) 555-1234</a></p>
+                            <p>Support: <a href="tel:+18005555678">+1 (800) 555-5678</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-card-content">
+                            <h3>Email</h3>
+                            <p>General: <a href="mailto:info@farwaysecurity.com">info@farwaysecurity.com</a></p>
+                            <p>Support: <a href="mailto:support@farwaysecurity.com">support@farwaysecurity.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-card-content">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM (PST)</p>
+                            <p>Support: 24/7</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50470.77791667087!2d-122.43297527944336!3d37.76089938898501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="offices-section">
+        <div class="container">
+            <h2 class="section-title">Our Global Offices</h2>
+            <div class="offices-grid">
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="images/security-shield.svg" alt="San Francisco Office">
+                    </div>
+                    <div class="office-info">
+                        <h3>San Francisco</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Security Avenue, Tech District</p>
+                        <p><i class="fas fa-phone-alt"></i> +1 (800) 555-1234</p>
+                        <p><i class="fas fa-envelope"></i> sf@farwaysecurity.com</p>
+                        <a href="#" class="btn btn-outline">Get Directions</a>
+                    </div>
+                </div>
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="images/security-shield.svg" alt="London Office">
+                    </div>
+                    <div class="office-info">
+                        <h3>London</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 45 Cyber Street, Tech Hub</p>
+                        <p><i class="fas fa-phone-alt"></i> +44 20 5555 1234</p>
+                        <p><i class="fas fa-envelope"></i> london@farwaysecurity.com</p>
+                        <a href="#" class="btn btn-outline">Get Directions</a>
+                    </div>
+                </div>
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="images/security-shield.svg" alt="Singapore Office">
+                    </div>
+                    <div class="office-info">
+                        <h3>Singapore</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 78 Digital Avenue, Business Park</p>
+                        <p><i class="fas fa-phone-alt"></i> +65 6555 1234</p>
+                        <p><i class="fas fa-envelope"></i> singapore@farwaysecurity.com</p>
+                        <a href="#" class="btn btn-outline">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Immediate Assistance?</h2>
+                <p>Our support team is available 24/7 to help you with any security concerns.</p>
+                <a href="tel:+18005555678" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Call Support</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-shield-alt"></i> Farway Security</h3>
+                    <p>Providing advanced security solutions to protect your digital life from evolving cyber threats.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#personal">Personal Protection</a></li>
+                        <li><a href="products.html#family">Family Shield</a></li>
+                        <li><a href="products.html#business">Business Security</a></li>
+                        <li><a href="products.html#mobile">Mobile Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="download.html">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Farway Security. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

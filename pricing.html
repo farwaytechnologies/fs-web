@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Farway Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for pricing page */
+        .pricing-table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-plan.featured {
+            border: 2px solid var(--primary-color);
+        }
+        
+        .pricing-plan.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray-color);
+        }
+        
+        .plan-features {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .plan-features i {
+            color: var(--secondary-color);
+        }
+        
+        .plan-features i.fa-times {
+            color: var(--gray-color);
+        }
+        
+        .plan-cta {
+            margin-top: 20px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .comparison-table i.fa-check {
+            color: var(--secondary-color);
+        }
+        
+        .comparison-table i.fa-times {
+            color: var(--gray-color);
+        }
+        
+        .faq-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .faq-question {
+            background-color: var(--light-color);
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background-color: white;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> Farway Security</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html" class="active">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Simple, Transparent Pricing</h1>
+                <p>Choose the right plan for your security needs with our flexible pricing options.</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/security-shield.svg" alt="Security Shield">
+            </div>
+        </div>
+    </section>
+
+    <section id="personal-plans" class="features">
+        <div class="container">
+            <h2 class="section-title">Personal Protection Plans</h2>
+            <div class="pricing-table">
+                <div class="pricing-plan">
+                    <h3 class="plan-name">Antivirus Plus</h3>
+                    <div class="plan-price">$29.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Real-time virus protection</li>
+                        <li><i class="fas fa-check"></i> Web protection</li>
+                        <li><i class="fas fa-check"></i> Email scanning</li>
+                        <li><i class="fas fa-check"></i> 1 device</li>
+                        <li><i class="fas fa-times"></i> Ransomware protection</li>
+                        <li><i class="fas fa-times"></i> VPN service</li>
+                        <li><i class="fas fa-times"></i> Password manager</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan featured">
+                    <h3 class="plan-name">Internet Security</h3>
+                    <div class="plan-price">$49.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Real-time virus protection</li>
+                        <li><i class="fas fa-check"></i> Web protection</li>
+                        <li><i class="fas fa-check"></i> Email scanning</li>
+                        <li><i class="fas fa-check"></i> Up to 3 devices</li>
+                        <li><i class="fas fa-check"></i> Ransomware protection</li>
+                        <li><i class="fas fa-check"></i> Secure online banking</li>
+                        <li><i class="fas fa-times"></i> VPN service</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan">
+                    <h3 class="plan-name">Total Security</h3>
+                    <div class="plan-price">$69.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Real-time virus protection</li>
+                        <li><i class="fas fa-check"></i> Web protection</li>
+                        <li><i class="fas fa-check"></i> Email scanning</li>
+                        <li><i class="fas fa-check"></i> Up to 5 devices</li>
+                        <li><i class="fas fa-check"></i> Ransomware protection</li>
+                        <li><i class="fas fa-check"></i> VPN service (limited)</li>
+                        <li><i class="fas fa-check"></i> Password manager</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="family-plans" class="products" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title">Family Protection Plans</h2>
+            <div class="pricing-table">
+                <div class="pricing-plan" id="family-basic">
+                    <h3 class="plan-name">Family Basic</h3>
+                    <div class="plan-price">$79.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Protection for up to 5 devices</li>
+                        <li><i class="fas fa-check"></i> Basic parental controls</li>
+                        <li><i class="fas fa-check"></i> Web filtering</li>
+                        <li><i class="fas fa-check"></i> Device management</li>
+                        <li><i class="fas fa-times"></i> Location tracking</li>
+                        <li><i class="fas fa-times"></i> Screen time management</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan featured" id="family-premium">
+                    <h3 class="plan-name">Family Premium</h3>
+                    <div class="plan-price">$99.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Protection for up to 10 devices</li>
+                        <li><i class="fas fa-check"></i> Advanced parental controls</li>
+                        <li><i class="fas fa-check"></i> Web filtering</li>
+                        <li><i class="fas fa-check"></i> Device management</li>
+                        <li><i class="fas fa-check"></i> Location tracking</li>
+                        <li><i class="fas fa-times"></i> Screen time management</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan" id="family-ultimate">
+                    <h3 class="plan-name">Family Ultimate</h3>
+                    <div class="plan-price">$129.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Unlimited device protection</li>
+                        <li><i class="fas fa-check"></i> Premium parental controls</li>
+                        <li><i class="fas fa-check"></i> Web filtering</li>
+                        <li><i class="fas fa-check"></i> Device management</li>
+                        <li><i class="fas fa-check"></i> Location tracking</li>
+                        <li><i class="fas fa-check"></i> Screen time management</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="business-plans" class="features">
+        <div class="container">
+            <h2 class="section-title">Business Security Plans</h2>
+            <div class="pricing-table">
+                <div class="pricing-plan">
+                    <h3 class="plan-name">Small Business</h3>
+                    <div class="plan-price">$199.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Up to 10 devices</li>
+                        <li><i class="fas fa-check"></i> Centralized management</li>
+                        <li><i class="fas fa-check"></i> Email protection</li>
+                        <li><i class="fas fa-check"></i> Firewall</li>
+                        <li><i class="fas fa-times"></i> Cloud security</li>
+                        <li><i class="fas fa-times"></i> 24/7 support</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan featured">
+                    <h3 class="plan-name">Business Pro</h3>
+                    <div class="plan-price">$399.99 <span>/year</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Up to 25 devices</li>
+                        <li><i class="fas fa-check"></i> Centralized management</li>
+                        <li><i class="fas fa-check"></i> Email protection</li>
+                        <li><i class="fas fa-check"></i> Advanced firewall</li>
+                        <li><i class="fas fa-check"></i> Cloud security</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-plan">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">Contact Us <span>for pricing</span></div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Unlimited devices</li>
+                        <li><i class="fas fa-check"></i> Advanced management console</li>
+                        <li><i class="fas fa-check"></i> Email & data protection</li>
+                        <li><i class="fas fa-check"></i> Enterprise-grade firewall</li>
+                        <li><i class="fas fa-check"></i> Cloud & network security</li>
+                        <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                    </ul>
+                    <div class="plan-cta">
+                        <a href="contact.html" class="btn btn-outline">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title">Compare Features</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Features</th>
+                        <th>Antivirus Plus</th>
+                        <th>Internet Security</th>
+                        <th>Total Security</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Real-time Protection</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Web Protection</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Email Protection</td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware Protection</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Secure Online Banking</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Password Manager</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>VPN Service</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>File Encryption</td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-times"></i></td>
+                        <td><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Number of Devices</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I choose the right plan for my needs?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Consider the number of devices you need to protect and the level of security features you require. For basic protection on a single device, Antivirus Plus is sufficient. For multiple devices with advanced protection, Internet Security or Total Security would be better options.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I upgrade my plan later?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can upgrade your plan at any time. The price difference between your current plan and the new plan will be prorated based on the remaining subscription period.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer monthly payment options?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer monthly payment options for all our plans. However, annual subscriptions provide better value with significant discounts compared to monthly payments.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a money-back guarantee?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer a 30-day money-back guarantee on all our plans. If you're not satisfied with our service, you can request a full refund within 30 days of purchase.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, PayPal, and bank transfers. For enterprise plans, we also offer invoice payment options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>Our security experts are ready to help you choose the right protection plan.</p>
+                <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-shield-alt"></i> Farway Security</h3>
+                    <p>Providing advanced security solutions to protect your digital life from evolving cyber threats.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#personal">Personal Protection</a></li>
+                        <li><a href="products.html#family">Family Shield</a></li>
+                        <li><a href="products.html#business">Business Security</a></li>
+                        <li><a href="products.html#mobile">Mobile Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="download.html">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Farway Security. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple script to toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                
+                // Toggle icon
+                const icon = question.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+    </script>
+</body>
+</html>

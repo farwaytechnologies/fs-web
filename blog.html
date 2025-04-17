@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Farway Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for blog page */
+        .blog-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .blog-main {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .blog-sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .featured-post {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .featured-post:hover {
+            transform: translateY(-5px);
+        }
+        
+        .featured-image {
+            height: 350px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 30px;
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .featured-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .featured-content p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .post-category {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .category-security {
+            background-color: rgba(44, 110, 207, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .category-tips {
+            background-color: rgba(52, 199, 89, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .category-news {
+            background-color: rgba(255, 204, 0, 0.1);
+            color: var(--warning-color);
+        }
+        
+        .category-updates {
+            background-color: rgba(255, 59, 48, 0.1);
+            color: var(--danger-color);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-card-image {
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 20px;
+        }
+        
+        .blog-card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .blog-card-content p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .sidebar-widget {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .sidebar-widget h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .recent-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-post-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .recent-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recent-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .recent-post-content span {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .categories-list span {
+            background-color: var(--light-color);
+            padding: 2px 8px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            padding: 5px 15px;
+            background-color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--dark-color);
+            font-weight: 500;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-container {
+                flex-direction: column;
+            }
+            
+            .featured-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> Farway Security</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Security Insights & Updates</h1>
+                <p>Stay informed about the latest cybersecurity trends, tips, and updates from our security experts.</p>
+                <div class="cta-buttons">
+                    <a href="#featured" class="btn btn-primary">Featured Articles</a>
+                    <a href="#subscribe" class="btn btn-outline">Subscribe</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/security-shield.svg" alt="Farway Security Blog">
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Featured Article</h2>
+            <div class="featured-post">
+                <div class="featured-image">
+                    <img src="images/security-shield.svg" alt="Featured Post">
+                </div>
+                <div class="featured-content">
+                    <span class="post-category category-security">Security</span>
+                    <h2>Understanding Zero-Day Vulnerabilities and How to Protect Your Systems</h2>
+                    <div class="post-meta">
+                        <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                        <span><i class="far fa-user"></i> John Smith</span>
+                        <span><i class="far fa-comment"></i> 24 Comments</span>
+                    </div>
+                    <p>Zero-day vulnerabilities represent one of the most significant threats in cybersecurity today. These are software flaws unknown to the vendor and without available patches, giving attackers a window of opportunity to exploit systems before defenses can be mounted...</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="blog-container">
+                <div class="blog-main">
+                    <div class="blog-grid">
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-tips">Tips</span>
+                                <h3>10 Essential Cybersecurity Practices for Remote Workers</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> June 10, 2023</span>
+                                    <span><i class="far fa-user"></i> Sarah Johnson</span>
+                                </div>
+                                <p>With remote work becoming the norm, securing your home office is more important than ever. Learn the essential practices to keep your data safe...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-news">News</span>
+                                <h3>Major Ransomware Attack Targets Healthcare Sector</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> June 5, 2023</span>
+                                    <span><i class="far fa-user"></i> Michael Chen</span>
+                                </div>
+                                <p>A recent wave of ransomware attacks has targeted hospitals and healthcare providers. Learn about the impact and how organizations can protect themselves...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-updates">Updates</span>
+                                <h3>Farway Security Releases New Threat Detection Engine</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                                    <span><i class="far fa-user"></i> Emma Davis</span>
+                                </div>
+                                <p>Our latest update introduces advanced AI-powered threat detection capabilities. Discover how this technology can identify and neutralize emerging threats...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-security">Security</span>
+                                <h3>The Rising Threat of Supply Chain Attacks</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> May 20, 2023</span>
+                                    <span><i class="far fa-user"></i> Robert Wilson</span>
+                                </div>
+                                <p>Supply chain attacks are becoming increasingly common. Learn how these sophisticated attacks work and strategies to mitigate the risks to your organization...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-tips">Tips</span>
+                                <h3>Creating a Strong Password Policy for Your Organization</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> May 15, 2023</span>
+                                    <span><i class="far fa-user"></i> Jennifer Lee</span>
+                                </div>
+                                <p>Password policies are a critical component of organizational security. Discover best practices for creating and implementing effective password policies...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card">
+                            <div class="blog-card-image">
+                                <img src="images/security-shield.svg" alt="Blog Post">
+                            </div>
+                            <div class="blog-card-content">
+                                <span class="post-category category-news">News</span>
+                                <h3>Global Cybersecurity Summit Highlights New Threats</h3>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> May 8, 2023</span>
+                                    <span><i class="far fa-user"></i> David Thompson</span>
+                                </div>
+                                <p>The recent Global Cybersecurity Summit brought together experts from around the world. Read our summary of the key insights and emerging threat landscapes...</p>
+                                <a href="#" class="btn btn-outline">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3>Search</h3>
+                        <form class="newsletter-form">
+                            <input type="text" placeholder="Search articles...">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Recent Posts</h3>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="images/security-shield.svg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Understanding Multi-Factor Authentication</a></h4>
+                                <span>June 2, 2023</span>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="images/security-shield.svg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">The Importance of Regular Security Audits</a></h4>
+                                <span>May 25, 2023</span>
+                            </div>
+                        </div>
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="images/security-shield.svg" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4><a href="#">Protecting Against Phishing Attacks</a></h4>
+                                <span>May 18, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">Security <span>15</span></a></li>
+                            <li><a href="#">Tips & Guides <span>23</span></a></li>
+                            <li><a href="#">News <span>18</span></a></li>
+                            <li><a href="#">Updates <span>9</span></a></li>
+                            <li><a href="#">Industry Insights <span>12</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Popular Tags</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag">Cybersecurity</a>
+                            <a href="#" class="tag">Ransomware</a>
+                            <a href="#" class="tag">Phishing</a>
+                            <a href="#" class="tag">Data Protection</a>
+                            <a href="#" class="tag">Malware</a>
+                            <a href="#" class="tag">Privacy</a>
+                            <a href="#" class="tag">Cloud Security</a>
+                            <a href="#" class="tag">Encryption</a>
+                        </div>
+                    </div>
+                    
+                    <div id="subscribe" class="sidebar-widget">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our newsletter to receive the latest security updates and insights.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-shield-alt"></i> Farway Security</h3>
+                    <p>Providing advanced security solutions to protect your digital life from evolving cyber threats.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#personal">Personal Protection</a></li>
+                        <li><a href="products.html#family">Family Shield</a></li>
+                        <li><a href="products.html#business">Business Security</a></li>
+                        <li><a href="products.html#mobile">Mobile Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="download.html">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Farway Security. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

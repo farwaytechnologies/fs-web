@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Farway Security</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for support page */
+        .support-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .support-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .support-main {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .support-sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .faq-container {
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(44, 110, 207, 0.1);
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--gray-color);
+        }
+        
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .support-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .support-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .support-card h3 i {
+            color: var(--primary-color);
+        }
+        
+        .support-card p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .support-form {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(44, 110, 207, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .kb-list {
+            list-style: none;
+        }
+        
+        .kb-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .kb-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .kb-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+        
+        .kb-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .kb-list i {
+            color: var(--primary-color);
+        }
+        
+        .support-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-method h4 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .contact-method p {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+        
+        .troubleshooting-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .troubleshooting-steps li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 25px;
+            counter-increment: step-counter;
+        }
+        
+        .troubleshooting-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+        
+        .troubleshooting-steps h4 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .troubleshooting-steps p {
+            color: var(--gray-color);
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .support-container {
+                flex-direction: column;
+            }
+            
+            .support-contact {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-shield-alt"></i> Farway Security</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Customer Support Center</h1>
+                <p>Get the help you need with our comprehensive support resources, troubleshooting guides, and expert assistance.</p>
+                <div class="cta-buttons">
+                    <a href="#faq" class="btn btn-primary">Browse FAQs</a>
+                    <a href="#contact-support" class="btn btn-outline">Contact Support</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/security-shield.svg" alt="Farway Security Support">
+            </div>
+        </div>
+    </section>
+
+    <section id="support-options" class="support-section">
+        <div class="container">
+            <h2 class="section-title">How Can We Help You?</h2>
+            <div class="support-container">
+                <div class="support-main">
+                    <div class="support-card">
+                        <h3><i class="fas fa-question-circle"></i> Self-Service Support</h3>
+                        <p>Find answers quickly with our comprehensive knowledge base, FAQs, and troubleshooting guides. Our self-service resources are available 24/7 to help you resolve common issues.</p>
+                        <a href="#faq" class="btn btn-outline">Browse FAQs</a>
+                    </div>
+                    
+                    <div class="support-card">
+                        <h3><i class="fas fa-hands-helping"></i> Technical Support</h3>
+                        <p>Need expert assistance? Our technical support team is ready to help you with complex issues, product configurations, and advanced troubleshooting. Submit a ticket or contact us directly.</p>
+                        <a href="#contact-support" class="btn btn-outline">Get Technical Support</a>
+                    </div>
+                    
+                    <div class="support-card">
+                        <h3><i class="fas fa-book"></i> Documentation</h3>
+                        <p>Access detailed product documentation, user guides, and technical specifications to help you get the most out of your Farway Security products.</p>
+                        <a href="#knowledge-base" class="btn btn-outline">View Documentation</a>
+                    </div>
+                </div>
+                
+                <div class="support-sidebar">
+                    <div class="support-form">
+                        <h3>Quick Support</h3>
+                        <p>Enter your product information for targeted support resources.</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="product">Product</label>
+                                <select id="product" name="product" required>
+                                    <option value="" selected disabled>Select a product</option>
+                                    <option value="endpoint">Endpoint Protection</option>
+                                    <option value="network">Network Security</option>
+                                    <option value="cloud">Cloud Security</option>
+                                    <option value="identity">Identity Protection</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="version">Version</label>
+                                <input type="text" id="version" name="version" placeholder="e.g., 4.2.1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Find Resources</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="support-section" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I install Farway Security on multiple devices?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To install Farway Security on multiple devices, you can use our central management console. Log in to your account, navigate to Device Management, and select "Add New Device." You can then generate installation links or download the installer package for distribution. Our Enterprise plans include deployment tools for large-scale installations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I do if I forgot my account password?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you've forgotten your account password, visit our login page and click on "Forgot Password." Enter your registered email address, and we'll send you a password reset link. For security reasons, the link expires after 24 hours. If you don't receive the email, check your spam folder or contact our support team for assistance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How often are security updates released?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We release regular security updates on a bi-weekly schedule to ensure your protection against the latest threats. Critical security patches may be released more frequently as needed. By default, Farway Security is configured to automatically download and install these updates, but you can customize your update settings through the application preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I transfer my license to a new device?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can transfer your Farway Security license to a new device. First, deactivate the license on your old device by going to Settings > License > Deactivate. Then, install Farway Security on your new device and activate it using your license key or account credentials. Each license allows installation on a specific number of devices based on your subscription plan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I schedule a system scan?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To schedule a system scan, open the Farway Security application and navigate to the "Scan" tab. Click on "Schedule Scan" and select your preferred frequency (daily, weekly, or monthly), time, and scan type (quick, full, or custom). You can also configure additional options such as low-resource usage mode or actions to take when threats are detected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="troubleshooting" class="support-section">
+        <div class="container">
+            <h2 class="section-title">Common Troubleshooting</h2>
+            <div class="support-card">
+                <h3><i class="fas fa-tools"></i> Installation Issues</h3>
+                <ol class="troubleshooting-steps">
+                    <li>
+                        <h4>Check System Requirements</h4>
+                        <p>Verify that your system meets the minimum requirements for Farway Security. This includes operating system version, processor, RAM, and available disk space.</p>
+                    </li>
+                    <li>
+                        <h4>Disable Conflicting Security Software</h4>
+                        <p>Temporarily disable any existing security software that might interfere with the installation process. Multiple security products can sometimes conflict with each other.</p>
+                    </li>
+                    <li>
+                        <h4>Run as Administrator</h4>
+                        <p>Right-click the installer and select "Run as administrator" to ensure the installation has the necessary permissions.</p>
+                    </li>
+                    <li>
+                        <h4>Use Clean Boot</h4>
+                        <p>If you're still experiencing issues, try performing a clean boot to eliminate potential software conflicts during installation.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="support-card">
+                <h3><i class="fas fa-sync"></i> Performance Optimization</h3>
+                <ol class="troubleshooting-steps">
+                    <li>
+                        <h4>Adjust Scan Settings</h4>
+                        <p>Configure scan settings to run during periods of low system usage. You can schedule scans during off-hours or enable the "Low Priority" option.</p>
+                    </li>
+                    <li>
+                        <h4>Exclude Trusted Files</h4>
+                        <p>Add frequently accessed files and folders to the exclusion list to prevent unnecessary scanning of trusted content.</p>
+                    </li>
+                    <li>
+                        <h4>Update Software</h4>
+                        <p>Ensure you're running the latest version of Farway Security, as performance improvements are regularly included in updates.</p>
+                    </li>
+                    <li>
+                        <h4>Optimize System Resources</h4>
+                        <p>Close unnecessary applications and services to free up system resources for Farway Security to operate efficiently.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="knowledge-base" class="support-section" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Knowledge Base</h2>
+            <div class="support-container">
+                <div class="support-main">
+                    <div class="support-card">
+                        <h3><i class="fas fa-book-open"></i> Popular Articles</h3>
+                        <ul class="kb-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Getting Started with Farway Endpoint Protection
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Configuring Firewall Rules for Optimal Protection
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Understanding Threat Detection Reports
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Setting Up Multi-Factor Authentication
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Best Practices for Securing Remote Workforces
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-alt"></i>
+                                    Recovering from Ransomware Attacks
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="support-card">
+                        <h3><i class="fas fa-video"></i> Video Tutorials</h3>
+                        <ul class="kb-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-play-circle"></i>
+                                    Complete Installation Guide
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-play-circle"></i>
+                                    Configuring Advanced Security Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-play-circle"></i>
+                                    How to Run and Interpret Security Scans
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-play-circle"></i>
+                                    Managing Multiple Devices
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="support-sidebar">
+                    <div class="support-card">
+                        <h3><i class="fas fa-download"></i> Downloads</h3>
+                        <ul class="kb-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Product User Guide (PDF)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Security Best Practices (PDF)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-archive"></i>
+                                    Offline Installer Package
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-file-code"></i>
+                                    API Documentation
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-support" class="support-section">
+        <div class="container">
+            <h2 class="section-title">Contact Support</h2>
+            <div class="support-container">
+                <div class="support-main">
+                    <div class="support-form">
+                        <h3>Submit a Support Ticket</h3>
+                        <p>Fill out the form below to create a support ticket. Our team will respond as soon as possible.</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="support-product">Product</label>
+                                <select id="support-product" name="product" required>
+                                    <option value="" selected disabled>Select a product</option>
+                                    <option value="endpoint">Endpoint Protection</option>
+                                    <option value="network">Network Security</option>
+                                    <option value="cloud">Cloud Security</option>
+                                    <option value="identity">Identity Protection</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority">Priority</label>
+                                <select id="priority" name="priority" required>
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Description</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="attachment">Attachments (Optional)</label>
+                                <input type="file" id="attachment" name="attachment">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Ticket</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="support-sidebar">
+                    <div class="support-card">
+                        <h3><i class="fas fa-headset"></i> Contact Methods</h3>
+                        <p>Choose your preferred way to reach our support team:</p>
+                        
+                        <div class="support-contact">
+                            <div class="contact-method">
+                                <i class="fas fa-phone-alt"></i>
+                                <h4>Phone Support</h4>
+                                <p>Available 24/7 for Premium and Enterprise customers</p>
+                                <a href="tel:+18005551234" class="btn btn-outline">+1 (800) 555-1234</a>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <i class="fas fa-comments"></i>
+                                <h4>Live Chat</h4>
+                                <p>Available Monday-Friday, 9am-6pm EST</p>
+                                <a href="#" class="btn btn-outline">Start Chat</a>
+                            </div>
+                        </div>
+                        
+                        <div class="support-contact">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <h4>Email Support</h4>
+                                <p>Response within 24-48 hours</p>
+                                <a href="mailto:support@farwaysecurity.com" class="btn btn-outline">support@farwaysecurity.com</a>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <i class="fas fa-users"></i>
+                                <h4>Community Forum</h4>
+                                <p>Connect with other users and experts</p>
+                                <a href="#" class="btn btn-outline">Visit Forum</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-shield-alt"></i> Farway Security</h3>
+                    <p>Providing advanced security solutions to protect your digital life from evolving cyber threats.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#personal">Personal Protection</a></li>
+                        <li><a href="products.html#family">Family Shield</a></li>
+                        <li><a href="products.html#business">Business Security</a></li>
+                        <li><a href="products.html#mobile">Mobile Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html#team">Our Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="download.html">Downloads</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Farway Security. All rights reserved.</p>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
